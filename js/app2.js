@@ -17,8 +17,12 @@ function calcular() {
     ventas[5] = extraerNumeroDesdeElemento("ventasTienda6");
 
     let totalVentas = sumarTotal(ventas);
+    let ventaMayor = calcularMayor(ventas);
+    let ventaMenor = calcularMenor(ventas);
 
-    let mensajeSalida = "Total de ventas: " + totalVentas;
+    let mensajeSalida = "Total de ventas: " + totalVentas + 
+                        "/ Venta Mayor: " + ventaMayor + 
+                        "/ Venta menor: " + ventaMenor;
     let elementoSalida = document.getElementById("parrafoSalida");
 
     elementoSalida.textContent = mensajeSalida;
@@ -32,4 +36,28 @@ function sumarTotal(array){
     }
 
     return total;
+}
+
+function calcularMenor(array) {
+    let minimo = array[0];
+
+    for (let venta of array) {
+        if(venta < minimo){
+            minimo = venta;
+        }
+    }
+
+    return minimo;
+}
+
+function calcularMayor(array) {
+    let maximo = array[0];
+
+    for (let venta of array) {
+        if(venta > maximo){
+            maximo = venta;
+        }
+    }
+
+    return maximo;
 }
