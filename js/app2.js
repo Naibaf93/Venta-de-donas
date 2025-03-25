@@ -67,9 +67,22 @@ function calcular() {
     let ventaMayor = calcularMayor(ventas);
     let ventaMenor = calcularMenor(ventas);
 
-    let mensajeSalida = "Total de ventas: " + totalVentas + 
-                        "/ Venta Mayor: " + ventaMayor + 
-                        "/ Venta menor: " + ventaMenor;
+    for(let item of elementosVentas.children) {
+        let valorVenta = extraerNumeroDesdeElemento(item.children[1]);
+
+        item.children[1].className ="menuNeutro";
+
+        if(valorVenta==ventaMayor){
+            item.children[1].className ="menuInputMayor";
+        }
+
+        if(valorVenta==ventaMenor){
+            item.children[1].className ="menuInputMenor";
+        }
+    }
+
+    let mensajeSalida = "Total de ventas: " + totalVentas;
+
     let elementoSalida = document.getElementById("parrafoSalida");
 
     elementoSalida.textContent = mensajeSalida;
